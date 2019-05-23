@@ -1,0 +1,160 @@
+import java.util.Scanner;
+public class mainTest {
+       
+    
+    
+    public static int edmg = 0;
+         public static int dmg = 0;
+        public static int HP = 100;
+        public static int eHP = 40; 
+        public static int d10;
+        public static int escolher;
+    
+        
+        
+        
+                            public static void attack(){
+       
+        
+        
+        
+       
+         
+    System.out.println("Você ataca o adversário");
+    System.out.println("");
+            
+         dmg = (int) (Math.random()*40);
+            
+            System.out.println("Você causa "+dmg+" de dano");
+            eHP = eHP - dmg; 
+            System.out.println("");
+            
+            System.out.println("Seu HP: "+HP+"\nHP do Inimigo: "+eHP);
+            System.out.println("");
+            
+            edmg = (int) (Math.random()*40);
+            
+            System.out.println("O adversário te ataca com "+edmg+" de dano");
+            System.out.println("");
+            HP = HP - edmg;
+            System.out.println("Seu HP: "+HP+"\nHP do Inimigo: "+eHP);
+            System.out.println("");
+            
+            if (HP <= 0){
+                System.out.println("Você morreu");
+                 
+                
+            }
+            if (eHP <= 0){
+                System.out.println("Você ganhou");
+                
+            }
+           
+        
+        
+    
+                            }
+                            public static void run(){
+                                
+                                
+                                
+                                
+                                
+    
+    System.out.println("Você escolheu correr, será rodado um d10, se você tirar acima de 6, foge, senão, toma um d40 de dano");
+    d10 = (int) (Math.random()*10);
+    System.out.println("Você tirou "+d10);
+    
+        if(d10>6){
+            System.out.println("Você fugiu");
+            eHP = 0;
+        }
+        else{
+        dmg = (int) (Math.random()*40);    
+            System.out.println("Você não fugiu e recebeu "+dmg+" de dano");
+            HP=HP-dmg;
+}
+                            }
+                            public static void potion(){
+                                
+                                
+                                
+                                
+    dmg = (int) (Math.random()*40);
+    System.out.println("Você curou 25 de HP e reebeu "+dmg+" de dano ao se distrair");                            
+    HP=HP-dmg;                        
+                            }
+                            
+                            
+                            
+                            public static int choices(){
+                                
+                                
+                                
+                                
+                                Scanner leitor = new Scanner(System.in);
+   
+   while (HP>0&&eHP>0){
+   System.out.println("Você pode escolher: \n\n(1) - ATACAR\n\n(2) - CORRER\n\n(3) - TOMAR POÇÃO DE CURA");  
+   escolher = leitor.nextInt();
+   
+   if(escolher == 1){
+      attack(); 
+   }
+   if(escolher == 2){
+      run(); 
+   }
+   if(escolher == 3){
+      potion(); 
+   }
+   
+   
+                            }
+   if(HP<=0){
+       return 0;
+   }
+   else{
+       return 1;
+   }
+                            }
+                            
+        
+       
+       
+    public static void main (String[] arg){
+       
+        
+        int vazio;  
+       System.out.println("Você achou um inimigo");
+       System.out.println("");
+       System.out.println("");
+       System.out.println("");
+       
+       vazio = choices();
+       if (vazio ==0){
+         System.out.println("Você morreu, recomece o jogo...");  
+       }
+       else{
+           System.out.println("A batalha acabou");
+           System.out.println("Seu HP: "+HP+"\nHP do Inimigo: "+eHP);
+           
+       }
+       
+      
+       
+       
+       
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    } 
+        
+        
+    }
